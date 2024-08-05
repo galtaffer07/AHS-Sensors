@@ -108,7 +108,7 @@ if uploaded_file is not None:  #checks to see if file uploaded
     
     #st.write(str(carbon_levels_without_holidays['CC RTU06 ZN-T'].quantile(0.25)) + "-" + str(carbon_levels_without_holidays['CC RTU06 ZN-T'].quantile(0.75)))
     
-    st.write(carbon_levels_without_holidays.dtypes)
+    st.write(carbon_levels_without_holidays.head())
     check_base = carbon_levels.drop(columns = carbon_levels.columns[0], axis = 1)
     
     #st.write("Weekly values: " + str(grouped_by_week['RM309 ZN14 Q CO2'].mean())) 
