@@ -111,7 +111,7 @@ if uploaded_file is not None:  #checks to see if file uploaded
     
     check_base = carbon_levels.drop(columns = carbon_levels.columns[0], axis = 1)
     
-    #st.write("Weekly values: " + str(grouped_by_week['RM309 ZN14 Q CO2'].mean())) 
+    st.write("Weekly values: " + str(grouped_by_week['RM309 ZN14 Q CO2'].mean())) 
     #st.write(grouped_by_month['RM309 ZN14 Q CO2'].mean()) #prints out monthly averages
     
     v = "input"
