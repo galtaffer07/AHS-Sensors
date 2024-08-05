@@ -48,14 +48,14 @@ if uploaded_file is not None:  #checks to see if file uploaded
         #datetime.date(2019, 5, 27) #memorial day
     ] 
 
-early_release_days = [
-    datetime.date(2024, 1, 26),
-    datetime.date(2024, 3, 8),
-    datetime.date(2024, 5, 3)
-    #datetime.date(2019, 2, 1),
-    #datetime.date(2019, 3, 15),
-    #datetime.date(2019, 5, 3)
-]
+    early_release_days = [
+        datetime.date(2024, 1, 26),
+        datetime.date(2024, 3, 8),
+        datetime.date(2024, 5, 3)
+        #datetime.date(2019, 2, 1),
+        #datetime.date(2019, 3, 15),
+        #datetime.date(2019, 5, 3)
+    ]
     SCHOOL_START_TIME = datetime.time(8, 15) #7:45 for old data, 8:15 for new
     NORMAL_RELEASE_TIME = datetime.time(2, 51) #2:20 for old data, 2:51 for new
     EARLY_RELEASE_TIME = datetime.time(11, 30) #10:50 for old data, 11:30 for new
