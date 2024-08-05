@@ -61,8 +61,8 @@ if uploaded_file is not None:  #checks to see if file uploaded
     EARLY_RELEASE_TIME = datetime.time(11, 30) #10:50 for old data, 11:30 for new
 
     carbon_levels_without_empty_columns.index = pd.to_datetime(carbon_levels_without_empty_columns.index)
-    #print(carbon_levels.index)
-    #print(carbon_levels.index.time)
+    #st.write(carbon_levels.index)
+    #st.write(carbon_levels.index.time)
 
     time_is_not_notschool = ~np.isin(carbon_levels_without_empty_columns.index.time, (pd.date_range("8:00", "15:00", freq = "1min").time))
     carbon_levels_school = carbon_levels_without_empty_columns[~time_is_not_notschool] #filters out of school hours
@@ -71,7 +71,7 @@ if uploaded_file is not None:  #checks to see if file uploaded
     time_is_not_weekend = ~np.isin(carbon_levels_school.index.weekday, [5,6]) #filters weekends
     carbon_levels_not_weekends = carbon_levels_school[time_is_not_weekend]
 
-    #print(carbon_levels_not_weekends)
+    #st.write(carbon_levels_not_weekends)
 
     time_is_not_holiday = ~np.isin(carbon_levels_not_weekends.index.date, Holidays_for_script) #filters holidays
     carbon_levels_without_holidays = carbon_levels_not_weekends[time_is_not_holiday]
@@ -106,13 +106,13 @@ if uploaded_file is not None:  #checks to see if file uploaded
     data_range = last_benchmark - first_benchmark
     data_within_range = carbon_levels_without_holidays[(carbon_levels_without_holidays['Cafe UV08 ZN08 CO2'] >= first_benchmark) & (carbon_levels_without_holidays['Cafe UV08 ZN08 CO2'] <= last_benchmark)]
     
-    #print(str(carbon_levels_without_holidays['CC RTU06 ZN-T'].quantile(0.25)) + "-" + str(carbon_levels_without_holidays['CC RTU06 ZN-T'].quantile(0.75)))
+    #st.write(str(carbon_levels_without_holidays['CC RTU06 ZN-T'].quantile(0.25)) + "-" + str(carbon_levels_without_holidays['CC RTU06 ZN-T'].quantile(0.75)))
     
     
     check_base = carbon_levels.drop(columns = carbon_levels.columns[0], axis = 1)
     
-    #print("Weekly values: " + str(grouped_by_week['RM309 ZN14 Q CO2'].mean())) 
-    #print(grouped_by_month['RM309 ZN14 Q CO2'].mean()) #prints out monthly averages
+    #st.write("Weekly values: " + str(grouped_by_week['RM309 ZN14 Q CO2'].mean())) 
+    #st.write(grouped_by_month['RM309 ZN14 Q CO2'].mean()) #prints out monthly averages
     
     v = "input"
     terminate_loop = False
@@ -160,28 +160,28 @@ if uploaded_file is not None:  #checks to see if file uploaded
         return sorted_sensors
     
     temperature = [col for col in carbon_levels_without_holidays.columns if 'CO2' not in col.upper()]#checks to see if columns in dataset do not have CO2 in name => temperature sensor
-    print(find_rooms_needing_AC(carbon_levels_without_holidays[temperature]))
+    st.write(find_rooms_needing_AC(carbon_levels_without_holidays[temperature]))
     
-    #print(find_max_temperatures(carbon_levels_without_holidays))
+    #st.write(find_max_temperatures(carbon_levels_without_holidays))
     morning = ~np.isin(carbon_levels_without_holidays.index.time, (pd.date_range("8:00", "9:30", freq = "1min").time)) #This will be used to denote the time periods in early morning
     carbon_levels_test = carbon_levels_without_holidays[~morning]
-    #print(carbon_levels_test)
+    #st.write(carbon_levels_test)
     new_name = input("Enter a sensor name to check: ")
     if (carbon_levels_test[new_name].quantile(0.65) < 68):
-        print("Bad system.")
-        print(carbon_levels_test[new_name].quantile(0.65))
+        st.write("Bad system.")
+        st.write(carbon_levels_test[new_name].quantile(0.65))
     else:
-        print("Good system with a temp of " + str(carbon_levels_test[new_name].quantile(0.65)) + " degrees Fahrenheit.")
+        st.write("Good system with a temp of " + str(carbon_levels_test[new_name].quantile(0.65)) + " degrees Fahrenheit.")
     
-    print(carbon_levels_without_holidays)
-    print(flag_sensors(carbon_levels_test))
+    st.write(carbon_levels_without_holidays)
+    st.write(flag_sensors(carbon_levels_test))
     
     high_list, medium_list, light_list = sort_sensors(carbon_levels_without_holidays)
     
-    print("High sensors are " + str(high_list))
-    print(medium_list)
+    st.write("High sensors are " + str(high_list))
+    st.write(medium_list)
     
-    #print(broken_sensors(carbon_levels_without_holidays))
+    #st.write(broken_sensors(carbon_levels_without_holidays))
     
     while not terminate_loop:
         column_name = input("Enter a sensor name to check if its system is all-set: ")
@@ -189,8 +189,8 @@ if uploaded_file is not None:  #checks to see if file uploaded
         if filter_level == "t":
             if column_name in carbon_levels_without_holidays.columns:
                 if ((abs(carbon_levels_without_holidays[column_name].quantile(0.15)-targ1) < 2) and (abs(carbon_levels_without_holidays[column_name].quantile(0.85)- targ2) < 2)):
-                    print("Good system")
-                    print("\nThis system runs from " + str(carbon_levels_without_holidays[column_name].quantile(0.15)) + " F to " + str(carbon_levels_without_holidays[column_name].quantile(0.85)) + " F.")
+                    st.write("Good system")
+                    st.write("\nThis system runs from " + str(carbon_levels_without_holidays[column_name].quantile(0.15)) + " F to " + str(carbon_levels_without_holidays[column_name].quantile(0.85)) + " F.")
                     while v != "yes":
                         v = input("Check again? ").lower()
                         if v == "no":
@@ -200,38 +200,38 @@ if uploaded_file is not None:  #checks to see if file uploaded
                             print("Invalid, try again: ")
     
                 else:
-                    print("Bad system")
-                    print("\nThis system runs from " + str(carbon_levels_without_holidays[column_name].quantile(0.15)) + " F to " + str(carbon_levels_without_holidays[column_name].quantile(0.85)) + " F.")
+                    st.write("Bad system")
+                    st.write("\nThis system runs from " + str(carbon_levels_without_holidays[column_name].quantile(0.15)) + " F to " + str(carbon_levels_without_holidays[column_name].quantile(0.85)) + " F.")
                     while v != "yes":
                         v = input("Check again? ").lower()
                         if v == "no":
                             terminate_loop = True
                             break 
                         elif v != "yes":
-                            print("Invalid, try again: ")
+                            st.write("Invalid, try again: ")
         elif filter_level == "co2":
             if column_name in carbon_levels_without_holidays.columns:
                 if ((carbon_levels_without_holidays[column_name].quantile(0.45)) < 800):
-                    print("Good system")
-                    print("\nThis system runs from " + str(carbon_levels_without_holidays[column_name].quantile(0.45)) + " ppm to " + str(carbon_levels_without_holidays[column_name].quantile(0.85)) + " ppm.")
+                    st.write("Good system")
+                    st.write("\nThis system runs from " + str(carbon_levels_without_holidays[column_name].quantile(0.45)) + " ppm to " + str(carbon_levels_without_holidays[column_name].quantile(0.85)) + " ppm.")
                     while v != "yes":
                         v = input("Check again? ").lower()
                         if v == "no":
                             terminate_loop = True
                             break
                         elif v != "yes":
-                            print("Invalid, try again: ")
+                            st.write("Invalid, try again: ")
     
                 else:
-                    print("Bad system")
-                    print("\nThis system runs from " + str(carbon_levels_without_holidays[column_name].quantile(0.45)) + " ppm to " + str(carbon_levels_without_holidays[column_name].quantile(0.85)) + " ppm.")
+                    st.write("Bad system")
+                    st.write("\nThis system runs from " + str(carbon_levels_without_holidays[column_name].quantile(0.45)) + " ppm to " + str(carbon_levels_without_holidays[column_name].quantile(0.85)) + " ppm.")
                     while v != "yes":
                         v = input("Check again? ").lower()
                         if v == "no":
                             terminate_loop = True
                             break 
                         elif v != "yes":
-                            print("Invalid, try again: ")
+                            st.write("Invalid, try again: ")
     
     
     
