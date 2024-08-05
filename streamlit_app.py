@@ -1,12 +1,8 @@
 import streamlit as st
 import os
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import folium
-from geopy.geocoders import Bing
-from folium.plugins import HeatMap
-import tqdm
-import sqlalchemy
 import numpy as np
 import datetime
 
