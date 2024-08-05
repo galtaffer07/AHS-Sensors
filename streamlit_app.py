@@ -1,8 +1,5 @@
 import streamlit as st
-import os
 import pandas as pd
-import matplotlib.pyplot as plt
-import folium
 import numpy as np
 import datetime
 
