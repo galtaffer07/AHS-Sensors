@@ -5,7 +5,7 @@ import datetime
 
 st.title('AHS CSV File')
 
-st.write("Using pd version:", pd._version_)
+st.write(pd._version_)
 
 uploaded_file = st.file_uploader("Choose a CSV file that was uploaded from Metasys", type="csv") #forces user to upload file
 
