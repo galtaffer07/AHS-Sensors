@@ -15,6 +15,7 @@ if uploaded_file is not None:  #checks to see if file uploaded
     pd.DataFrame.iteritems = pd.DataFrame.items
     pd.set_option("display.max.columns", None)
     #carbon_levels.dropna(axis = 1, inplace = True)
+    st.write("Before dropping NaNs:", carbon_levels_without_empty_columns)
     carbon_levels_without_empty_columns.dropna(axis = 0, inplace = True)
     st.write("After dropping NaNs:", carbon_levels_without_empty_columns)
 
