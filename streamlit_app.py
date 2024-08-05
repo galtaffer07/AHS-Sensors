@@ -5,8 +5,10 @@ import datetime
 
 st.title('AHS CSV File')
 
+st.write("Using pd version:", pd._version_)
 
 uploaded_file = st.file_uploader("Choose a CSV file that was uploaded from Metasys", type="csv") #forces user to upload file
+
 
 
 if uploaded_file is not None:  #checks to see if file uploaded
