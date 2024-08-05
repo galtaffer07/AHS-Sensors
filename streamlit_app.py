@@ -21,32 +21,32 @@ if uploaded_file is not None:  #checks to see if file uploaded
 
     #PROCESS FOR FILTERING
     Holidays_for_script = [
-    datetime.date(2024, 1, 1),
-    datetime.date(2024, 1, 15),
-    datetime.date(2024, 2, 19),
-    datetime.date(2024, 2, 20),
-    datetime.date(2024, 2, 21),
-    datetime.date(2024, 2, 22),
-    datetime.date(2024, 2, 23),
-    datetime.date(2024, 4, 15),
-    datetime.date(2024, 4, 16),
-    datetime.date(2024, 4, 17),
-    datetime.date(2024, 4, 18),
-    datetime.date(2024, 4, 19),
-    datetime.date(2024, 5, 27),
-    datetime.date(2024, 6, 19)
-    #datetime.date(2019, 2, 18), #when the data starts - feb break
-    #datetime.date(2019, 2, 19),
-    #datetime.date(2019, 2, 20),
-    #datetime.date(2019, 2, 21),
-    #datetime.date(2019, 2, 22),
-    #datetime.date(2019, 4, 15), #april break
-    #datetime.date(2019, 4, 16),
-    #datetime.date(2019, 4, 17),
-    #datetime.date(2019, 4, 18),
-    #datetime.date(2019, 4, 19),
-    #datetime.date(2019, 5, 27) #memorial day
-] 
+        datetime.date(2024, 1, 1),
+        datetime.date(2024, 1, 15),
+        datetime.date(2024, 2, 19),
+        datetime.date(2024, 2, 20),
+        datetime.date(2024, 2, 21),
+        datetime.date(2024, 2, 22),
+        datetime.date(2024, 2, 23),
+        datetime.date(2024, 4, 15),
+        datetime.date(2024, 4, 16),
+        datetime.date(2024, 4, 17),
+        datetime.date(2024, 4, 18),
+        datetime.date(2024, 4, 19),
+        datetime.date(2024, 5, 27),
+        datetime.date(2024, 6, 19)
+        #datetime.date(2019, 2, 18), #when the data starts - feb break
+        #datetime.date(2019, 2, 19),
+        #datetime.date(2019, 2, 20),
+        #datetime.date(2019, 2, 21),
+        #datetime.date(2019, 2, 22),
+        #datetime.date(2019, 4, 15), #april break
+        #datetime.date(2019, 4, 16),
+        #datetime.date(2019, 4, 17),
+        #datetime.date(2019, 4, 18),
+        #datetime.date(2019, 4, 19),
+        #datetime.date(2019, 5, 27) #memorial day
+    ] 
 
 early_release_days = [
     datetime.date(2024, 1, 26),
