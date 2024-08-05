@@ -15,7 +15,8 @@ if uploaded_file is not None:  #checks to see if file uploaded
     pd.DataFrame.iteritems = pd.DataFrame.items
     pd.set_option("display.max.columns", None)
     #carbon_levels.dropna(axis = 1, inplace = True)
-    carbon_levels_without_empty_columns.dropna(axis = 0)
+    carbon_levels_without_empty_columns.dropna(axis = 0, inplace = True)
+    st.write("After dropping NaNs:", carbon_levels_without_empty_columns)
 
     
 
@@ -66,15 +67,18 @@ if uploaded_file is not None:  #checks to see if file uploaded
 
     time_is_not_notschool = ~np.isin(carbon_levels_without_empty_columns.index.time, (pd.date_range("8:00", "15:00", freq = "1min").time))
     carbon_levels_school = carbon_levels_without_empty_columns[~time_is_not_notschool] #filters out of school hours
+    st.write("After filtering out school hours:", carbon_levels_school)
 
 
     time_is_not_weekend = ~np.isin(carbon_levels_school.index.weekday, [5,6]) #filters weekends
     carbon_levels_not_weekends = carbon_levels_school[time_is_not_weekend]
+    st.write("After filtering out weekends:", carbon_levels_not_weekends)
 
     #st.write(carbon_levels_not_weekends)
 
     time_is_not_holiday = ~np.isin(carbon_levels_not_weekends.index.date, Holidays_for_script) #filters holidays
     carbon_levels_without_holidays = carbon_levels_not_weekends[time_is_not_holiday]
+    st.write("After filtering out holidays:", carbon_levels_without_holidays)
 
     is_early_release_day = np.isin(carbon_levels_without_holidays.index.date, early_release_days) #filters early release days
     is_within_early_release_hours = (
@@ -90,6 +94,7 @@ if uploaded_file is not None:  #checks to see if file uploaded
     carbon_levels_in_normal_school_hours = carbon_levels_without_holidays[
         (is_within_early_release_hours | is_within_normal_school_hours)
     ]
+    st.write("After filtering out early release days:", carbon_levels_without_holidays)
     
     
     
