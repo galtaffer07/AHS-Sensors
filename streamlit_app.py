@@ -12,7 +12,7 @@ uploaded_file = st.file_uploader("Choose a CSV file that was uploaded from Metas
 
 
 if uploaded_file is not None:  #checks to see if file uploaded
-    carbon_levels = pd.read_csv(uploaded_file)
+    carbon_levels = pd.read_csv(uploaded_file, skipfooter = 3, engine = 'python', index_col=0)
     carbon_levels_without_empty_columns = carbon_levels[[c for c in carbon_levels.columns if not c.startswith('Unnamed: ')]]  #removes the 175 empty columns at end of dataset
     pd.DataFrame.iteritems = pd.DataFrame.items
     pd.set_option("display.max.columns", None)
