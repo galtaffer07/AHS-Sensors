@@ -125,7 +125,7 @@ if uploaded_file is not None:  #checks to see if file uploaded
 
         mean_value = grouped_by_week[selected_sensor].mean()
         
-        st.write(f'Weekly values: {mean_value:.1f}')
+        st.write(f'Weekly values: {mean_value}')
     
     #st.write("Weekly values: " + str(grouped_by_week['RM309 ZN14 Q CO2'].mean())) 
     #st.write(grouped_by_month['RM309 ZN14 Q CO2'].mean()) #prints out monthly averages
