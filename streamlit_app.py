@@ -122,7 +122,7 @@ if uploaded_file is not None:  #checks to see if file uploaded
     selected_sensor = st.selectbox('Select a sensor:', list(carbon_levels_without_holidays.columns))
     if selected_sensor:
         st.write(f'Sensor: {selected_sensor}')
-        st.write(f'Weekly values: {grouped_by_week[selected_sensor]:.1f}.mean()')
+        st.write(f'Weekly values: {grouped_by_week[selected_sensor].mean():.1f}')
     
     #st.write("Weekly values: " + str(grouped_by_week['RM309 ZN14 Q CO2'].mean())) 
     #st.write(grouped_by_month['RM309 ZN14 Q CO2'].mean()) #prints out monthly averages
