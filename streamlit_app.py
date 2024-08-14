@@ -126,7 +126,7 @@ if uploaded_file is not None:  #checks to see if file uploaded
         st.write("Weekly values:")
         weekly_values = grouped_by_week[selected_sensor].mean()
         for i, value in weekly_values.items():
-            if selected_sensor.contains("CO2"):
+            if "CO2" in selected_sensor:
                 st.write(f"Week {i}: {value:.1f} ppm")
             else:
                 st.write(f"Week {i}: {value:.1f}°F")
