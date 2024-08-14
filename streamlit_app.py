@@ -116,8 +116,10 @@ if uploaded_file is not None:  #checks to see if file uploaded
     
     #st.write(str(carbon_levels_without_holidays['CC RTU06 ZN-T'].quantile(0.25)) + "-" + str(carbon_levels_without_holidays['CC RTU06 ZN-T'].quantile(0.75)))
     
-    st.write(carbon_levels_without_holidays)
+    #st.write(carbon_levels_without_holidays)
     check_base = carbon_levels.drop(columns = carbon_levels.columns[0], axis = 1)
+
+    selected_sensor = st.selectbox('Select a sensor:', list(carbon_levels_without_holidays.columns))
     
     #st.write("Weekly values: " + str(grouped_by_week['RM309 ZN14 Q CO2'].mean())) 
     #st.write(grouped_by_month['RM309 ZN14 Q CO2'].mean()) #prints out monthly averages
