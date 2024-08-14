@@ -120,6 +120,9 @@ if uploaded_file is not None:  #checks to see if file uploaded
     check_base = carbon_levels.drop(columns = carbon_levels.columns[0], axis = 1)
 
     selected_sensor = st.selectbox('Select a sensor:', list(carbon_levels_without_holidays.columns))
+    if selected_sensor:
+        st.write(f'Sensor: {selected_sensor}')
+        st.write(f'Weekly values: {grouped_by_week[selected_sensor].mean()}')
     
     #st.write("Weekly values: " + str(grouped_by_week['RM309 ZN14 Q CO2'].mean())) 
     #st.write(grouped_by_month['RM309 ZN14 Q CO2'].mean()) #prints out monthly averages
