@@ -181,6 +181,7 @@ if uploaded_file is not None:  #checks to see if file uploaded
     
     temperature = [col for col in carbon_levels_without_holidays.columns if 'CO2' not in col.upper()]#checks to see if columns in dataset do not have CO2 in name => temperature sensor
     st.write("### Sensors Needing AC (Sorted by Median Temperature)")
+    sorted_rooms = find_rooms_needing_AC(carbon_levels_without_holidays[temperature])
     for sensor, median in sorted_rooms:
         st.write(f"**{sensor}**: {median:.1f}°F")
     
