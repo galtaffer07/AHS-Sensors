@@ -180,7 +180,9 @@ if uploaded_file is not None:  #checks to see if file uploaded
         return sorted_sensors
     
     temperature = [col for col in carbon_levels_without_holidays.columns if 'CO2' not in col.upper()]#checks to see if columns in dataset do not have CO2 in name => temperature sensor
-    st.write(find_rooms_needing_AC(carbon_levels_without_holidays[temperature]))
+    st.write("### Sensors Needing AC (Sorted by Median Temperature)")
+    for sensor, median in sorted_rooms:
+        st.write(f"**{sensor}**: {median:.1f}°F")
     
     #st.write(find_max_temperatures(carbon_levels_without_holidays))
     morning = ~np.isin(carbon_levels_without_holidays.index.time, (pd.date_range("8:00", "9:30", freq = "1min").time)) #This will be used to denote the time periods in early morning
